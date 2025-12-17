@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: https://ssl.gstatic.com https://fonts.gstatic.com https://cdnjs.cloudflare.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: content: blob: https:; connect-src 'self' https:; media-src *;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/index.css">
+        <title>Geo Guess</title>
+    </head>
+    <body class="grey lighten-4">
+        <header>
+            <nav class="teal">
+                <div class="nav-wrapper container">
+                    <a href="#" class="brand-logo">GeoGuess</a>
+                    <ul class="right hide-on-small-only">
+                        <li><a class="waves-effect waves-light btn-small" id="btnStart">Nueva ronda</a></li>
+                        <li><a class="waves-effect waves-light btn-small modal-trigger" href="#howtoModal">Ayuda</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main class="container">
+            <div class="row app-row">
+                <div class="col s12 m8 l9">
+                    <div class="card map-card">
+                        <div class="card-content">
+                            <span class="card-title">Explora</span>
+                            <div id="pano" class="map-view z-depth-1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 m4 l3">
+                    <div class="card control-card">
+                        <div class="card-content">
+                            <span class="card-title">Tu apuesta</span>
+                            <p class="grey-text text-darken-1">Selecciona dificultad, explora el panorama y haz tu suposicion.</p>
+
+                            <div class="section">
+                                <div class="input-field">
+                                    <select id="difficultySelect">
+                                        <option value="easy" selected>Facil</option>
+                                        <option value="medium">Medio</option>
+                                        <option value="hard">Dificil</option>
+                                    </select>
+                                    <label>Dificultad</label>
+                                </div>
+                            </div>
+
+                            <div class="section control-actions">
+                                <a class="btn waves-effect waves-light" id="btnGuess">Adivinar</a>
+                                <a class="btn-flat waves-effect" id="btnReveal">Revelar</a>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <div class="section">
+                                <ul class="collection" id="scoreBoard">
+                                    <li class="collection-item">
+                                        <span class="title">Ronda</span>
+                                        <span class="secondary-content" id="roundLabel">--</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="title">Puntaje</span>
+                                        <span class="secondary-content" id="scoreLabel">0</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span class="title">Distancia</span>
+                                        <span class="secondary-content" id="distanceLabel">--</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="section">
+                                <p class="grey-text text-darken-2" id="statusLabel">Esperando ubicacion...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="howtoModal" class="modal">
+            <div class="modal-content">
+                <h4>Como jugar</h4>
+                <ol class="howto-list">
+                    <li>Pulsa "Nueva ronda" para cargar un panorama.</li>
+                    <li>Navega y elige donde crees que esta el lugar.</li>
+                    <li>Marca tu guess en el mapa y pulsa "Adivinar".</li>
+                    <li>Revisa puntaje y distancia, luego pasa a la siguiente.</li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-close waves-effect waves-green btn-flat">Listo</a>
+            </div>
+        </div>
+
+        <footer class="page-footer teal darken-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m8">
+                        <h6 class="white-text">GeoGuess Cordova</h6>
+                        <p class="grey-text text-lighten-4">Base lista para integrar tu API de ubicaciones y proveedor de mapas.</p>
+                    </div>
+                    <div class="col s12 m4 right-align">
+                        <a class="btn-small waves-effect waves-light" id="btnReset">Reiniciar partida</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Only load cordova.js if running in Cordova environment
+            if (window.location.protocol === 'file:' || window.cordova) {
+                document.write('<script src="cordova.js"><\/script>');
+            }
+        </script>
+        <script src="js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

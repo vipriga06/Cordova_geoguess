@@ -1,0 +1,149 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f5f7f9;
+}
+
+
+.app-row {
+    margin-top: 16px;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 12px 0;
+}
+
+.app-row .col {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.btn, .btn-large, .btn-small {
+    border-radius: 1.2vh;
+}
+
+.map-card, .control-card {
+    height: 100%;
+}
+
+.map-view {
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #e0f2f1, #ffffff);
+}
+
+
+.map-card .card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.map-card .card-title {
+    flex-shrink: 0;
+    margin-bottom: 12px;
+}
+
+.map-card .map-view {
+    flex: 1;
+    min-height: 320px;
+    position: relative;
+}
+
+#pano {
+    width: 100%;
+    height: 100%;
+    background: #e0f2f1;
+    border: 2px solid #009688;
+}
+
+main {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+main > .row {
+    flex: 1;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.control-card {
+    overflow: hidden;
+}
+
+
+.control-card .card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.control-card .input-field {
+    margin: 0 0 12px 0;
+}
+
+.card-content > *:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.control-card .section {
+    flex-shrink: 0;
+}
+
+.control-actions a {
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.control-actions {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.howto-list {
+    padding-left: 16px;
+}
+
+.page-footer {
+    padding-top: 16px;
+    flex-shrink: 0;
+    padding-bottom: 12px;
+}
+
+#statusLabel {
+    margin-top: 8px;
+}
+
+@media screen and (max-width: 992px) {
+    .app-row {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+    }
+
+    .map-card .map-view {
+        min-height: 45vh;
+    }
+
+    main {
+        overflow: auto;
+    }
+}
